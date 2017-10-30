@@ -37,10 +37,10 @@ dependencies {
     compile "com.android.support:design:$supportLibraryVersion"
     compile 'com.android.support:multidex:1.0.1'
 
-    compile project(path: ':auth')
-    compile project(path: ':database')
-    compile project(path: ':firestore')
-    compile project(path: ':storage')
+    implementation project(path: ':auth')
+    implementation project(path: ':database')
+    implementation project(path: ':firestore')
+    implementation project(path: ':storage')
 
     compile "com.google.android.gms:play-services-auth:$firebaseVersion"
     compile "com.google.firebase:firebase-auth:$firebaseVersion"
