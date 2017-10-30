@@ -9,14 +9,26 @@
     android:clipChildren="false"
     android:clipToPadding="false">
 
-    <ImageView
-        android:id="@+id/logo"
-        style="@style/FirebaseUI.AuthMethodPicker.Logo"
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/container"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:ignore="ContentDescription" />  <!-- TODO remove once the bug is fixed: https://issuetracker.google.com/issues/38281866-->
+        >
+
+        <ImageView
+            android:id="@+id/logo"
+            style="@style/FirebaseUI.AuthMethodPicker.Logo"
+            tools:ignore="ContentDescription" />  <!-- TODO remove once the bug is fixed: https://issuetracker.google.com/issues/38281866-->
+
+        <FrameLayout
+            android:id="@+id/view_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </FrameLayout>
 
     <ScrollView
         android:id="@+id/container"

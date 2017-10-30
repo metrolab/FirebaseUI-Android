@@ -17,7 +17,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
@@ -47,6 +49,12 @@ public class FlowParameters implements Parcelable {
     @DrawableRes
     public final int logoId;
 
+    @ColorInt
+    public final int backgroundColor;
+
+    @LayoutRes
+    public final int customView;
+
     @Nullable
     public final String termsOfServiceUrl;
 
@@ -63,6 +71,8 @@ public class FlowParameters implements Parcelable {
             @NonNull List<IdpConfig> providerInfo,
             @StyleRes int themeId,
             @DrawableRes int logoId,
+            @ColorInt int backgroundColor,
+            @LayoutRes int customView,
             @Nullable String termsOfServiceUrl,
             @Nullable String privacyPolicyUrl,
             boolean enableCredentials,
@@ -73,6 +83,8 @@ public class FlowParameters implements Parcelable {
                 Preconditions.checkNotNull(providerInfo, "providerInfo cannot be null"));
         this.themeId = themeId;
         this.logoId = logoId;
+        this.backgroundColor = backgroundColor;
+        this.customView = customView;
         this.termsOfServiceUrl = termsOfServiceUrl;
         this.privacyPolicyUrl = privacyPolicyUrl;
         this.enableCredentials = enableCredentials;
@@ -110,6 +122,8 @@ public class FlowParameters implements Parcelable {
         dest.writeTypedList(providerInfo);
         dest.writeInt(themeId);
         dest.writeInt(logoId);
+        dest.writeInt(backgroundColor);
+        dest.writeInt(customView);
         dest.writeString(termsOfServiceUrl);
         dest.writeString(privacyPolicyUrl);
         dest.writeInt(enableCredentials ? 1 : 0);
@@ -129,6 +143,8 @@ public class FlowParameters implements Parcelable {
             List<IdpConfig> providerInfo = in.createTypedArrayList(IdpConfig.CREATOR);
             int themeId = in.readInt();
             int logoId = in.readInt();
+            int backgroundColor = in.readInt();
+            int customView = in.readInt();
             String termsOfServiceUrl = in.readString();
             String privacyPolicyUrl = in.readString();
             boolean enableCredentials = in.readInt() != 0;
@@ -140,6 +156,8 @@ public class FlowParameters implements Parcelable {
                     providerInfo,
                     themeId,
                     logoId,
+                    backgroundColor,
+                    customView,
                     termsOfServiceUrl,
                     privacyPolicyUrl,
                     enableCredentials,

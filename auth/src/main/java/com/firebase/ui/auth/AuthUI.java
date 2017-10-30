@@ -20,7 +20,9 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.annotation.CallSuper;
+import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringDef;
@@ -422,6 +424,8 @@ public class AuthUI {
     private abstract class AuthIntentBuilder<T extends AuthIntentBuilder> {
         int mLogo = NO_LOGO;
         int mTheme = getDefaultTheme();
+        @ColorInt int mBackgroundColor = -1;
+        @LayoutRes int mCustomView = -1;
         List<IdpConfig> mProviders = new ArrayList<>();
         String mTosUrl;
         String mPrivacyPolicyUrl;
@@ -449,6 +453,16 @@ public class AuthUI {
          */
         public T setLogo(@DrawableRes int logo) {
             mLogo = logo;
+            return (T) this;
+        }
+
+        public T setAuthBackground(@ColorInt int color) {
+            mBackgroundColor = color;
+            return (T) this;
+        }
+
+        public T setAuthCustomView(@LayoutRes int layout) {
+            mCustomView = layout;
             return (T) this;
         }
 
@@ -613,6 +627,8 @@ public class AuthUI {
                     mProviders,
                     mTheme,
                     mLogo,
+                    mBackgroundColor,
+                    mCustomView,
                     mTosUrl,
                     mPrivacyPolicyUrl,
                     mEnableCredentials,
