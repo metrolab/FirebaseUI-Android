@@ -85,15 +85,19 @@ public class AuthMethodPickerActivity extends AppCompatBase implements IdpCallba
         populateIdpList(getFlowParams().providerInfo);
 
         int logoId = getFlowParams().logoId;
+        @LayoutRes int viewId = getFlowParams().customView;
+
         if (logoId == AuthUI.NO_LOGO) {
             findViewById(R.id.logo).setVisibility(View.GONE);
 
-            ConstraintLayout layout = findViewById(R.id.root);
-            ConstraintSet constraints = new ConstraintSet();
-            constraints.clone(layout);
-            constraints.setHorizontalBias(R.id.container, 0.5f);
-            constraints.setVerticalBias(R.id.container, 0.5f);
-            constraints.applyTo(layout);
+            if (viewId == -1) {
+                ConstraintLayout layout = findViewById(R.id.root);
+                ConstraintSet constraints = new ConstraintSet();
+                constraints.clone(layout);
+                constraints.setHorizontalBias(R.id.container, 0.5f);
+                constraints.setVerticalBias(R.id.container, 0.5f);
+                constraints.applyTo(layout);
+            }
         } else {
             ImageView logo = findViewById(R.id.logo);
             logo.setImageResource(logoId);
@@ -105,7 +109,6 @@ public class AuthMethodPickerActivity extends AppCompatBase implements IdpCallba
             layout.setBackgroundColor(color);
         }
 
-        @LayoutRes int viewId = getFlowParams().customView;
         if (viewId != -1) {
             FrameLayout layout = findViewById(R.id.view_container);
             layout.addView(LayoutInflater.from(this).inflate(viewId, null));
