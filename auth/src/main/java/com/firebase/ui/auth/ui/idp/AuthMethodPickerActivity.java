@@ -17,13 +17,17 @@ package com.firebase.ui.auth.ui.idp;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
+import android.support.annotation.LayoutRes;
 import android.support.annotation.Nullable;
 import android.support.annotation.RestrictTo;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.firebase.ui.auth.AuthUI;
@@ -93,6 +97,18 @@ public class AuthMethodPickerActivity extends AppCompatBase implements IdpCallba
         } else {
             ImageView logo = findViewById(R.id.logo);
             logo.setImageResource(logoId);
+        }
+
+        @ColorInt int color = getFlowParams().backgroundColor;
+        if (color != -1) {
+            ConstraintLayout layout = findViewById(R.id.root);
+            layout.setBackgroundColor(color);
+        }
+
+        @LayoutRes int viewId = getFlowParams().customView;
+        if (viewId != -1) {
+            FrameLayout layout = findViewById(R.id.view_container);
+            layout.addView(LayoutInflater.from(this).inflate(viewId, null));
         }
     }
 
