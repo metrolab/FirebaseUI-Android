@@ -1,1 +1,4 @@
-include ':app', ':library', ':database', ':auth', ':storage', ':firestore', ':common'
+if (!System.env.JITPACK)
+    include ':app'
+
+include ':library', ':database', ':auth', ':storage', ':firestore', ':common'

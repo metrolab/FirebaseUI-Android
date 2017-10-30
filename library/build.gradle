@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 check.dependsOn 'testAll', 'prepareArtifacts'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.metrolab'
 
 android {
     compileSdkVersion compileSdk

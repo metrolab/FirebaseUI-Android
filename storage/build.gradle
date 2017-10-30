@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply from: '../library/quality/quality.gradle'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.metrolab'
 
 android {
     compileSdkVersion compileSdk
@@ -24,7 +26,7 @@ dependencies {
     compile "com.android.support:appcompat-v7:$supportLibraryVersion"
     compile "com.android.support:palette-v7:$supportLibraryVersion"
 
-    provided 'com.github.bumptech.glide:glide:4.1.1'
+    provided 'com.github.bumptech.glide:glide:4.2.0'
 
     compile "com.google.firebase:firebase-storage:$firebaseVersion"
 }

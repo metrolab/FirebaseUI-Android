@@ -1,6 +1,8 @@
 apply plugin: 'com.android.library'
 apply from: '../library/quality/quality.gradle'
 check.dependsOn 'compileDebugAndroidTestJavaWithJavac'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.metrolab'
 
 android {
     compileSdkVersion compileSdk

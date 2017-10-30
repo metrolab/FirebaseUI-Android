@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
 apply from: '../library/quality/quality.gradle'
+apply plugin: 'com.github.dcendents.android-maven'
+group='com.github.metrolab'
+
 
 android {
     compileSdkVersion compileSdk
@@ -46,7 +49,7 @@ android {
 dependencies {
     compile "com.android.support:design:$supportLibraryVersion"
     compile "com.android.support:customtabs:$supportLibraryVersion"
-    compile 'com.android.support.constraint:constraint-layout:1.1.0-beta1'
+    compile 'com.android.support.constraint:constraint-layout:1.1.0-beta3'
 
     compile "com.google.firebase:firebase-auth:$firebaseVersion"
     compile "com.google.android.gms:play-services-auth:$firebaseVersion"
@@ -60,7 +63,7 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
     //noinspection GradleDynamicVersion
-    testCompile 'org.mockito:mockito-core:2.8.+'
+    testCompile 'org.mockito:mockito-core:2.10.0'
     testCompile 'org.robolectric:robolectric:3.4'
     testCompile 'com.facebook.android:facebook-login:4.27.0'
 }
